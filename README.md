@@ -1,5 +1,5 @@
 # RNAseq_PE
-This readme describes how to execute the snake make workflow for paired-end RNA-seq pre-processing (fastq -> feature counting), Utilizing STAR for alignment and Featurecounts for gene level counting.
+This pipeline was written for execution on the NYU big purple server. This readme describes how to execute the snake make workflow for paired-end RNA-seq pre-processing (fastq -> feature counting), Utilizing STAR for alignment and Featurecounts for gene level counting.
 
 # Description of files required for snakemake:
 ## Snakefile
