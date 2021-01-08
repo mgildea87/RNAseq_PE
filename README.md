@@ -6,6 +6,7 @@ This readme describes how to execute the snake make workflow for paired-end RNA-
 This file contains the work flow
 ## samples_info.tab
 This file contains a tab deliminated table with:
+
 		1. The names of R1 and R2 of each fastq file as received from the sequencing center. 
 		2. Simple sample names
 		3. Condition (e.g. diabetic vs non_diabetic)
@@ -14,6 +15,7 @@ This file contains a tab deliminated table with:
 		6. Additional info can be added to this table for downstream use in analysis
 ## config.yaml
 This file contains general configuaration info.
+
 		1. Where to locate the samples_info.tab file
 		2. Path to STAR indexed genome
 		3. Path to feature file (.GTF) for featurecounts
@@ -21,16 +23,19 @@ This file contains general configuaration info.
 Sbatch parameters for each rule in the Snakefile workflow
 ## rename.py
 This python script renames the fastq files from the generally verbose ids given by the sequencing center to those supplied in the Samples_info.tab file.
+
 		- The Simple sample name, condition, and replicate columns are concatenated and form the new sample_id_Rx.fastq.gz files
 		- This script is executed by the rename rule in the Snakemake workflow
 ## snakemake_init.sh
 This bash script:
+
 		1. loads the miniconda3/4.6.14 module
 		2. Loads the conda environment (/gpfs/data/fisherlab/conda_envs/RNAseq)
 		3. Executes snakemake
 
 ## Usage
 When starting a new project:
+
 		1. Copy the above noted files (6) into the new project directory from /gpfs/home/gildem01/workflows/RNAseq_PE
 		2. Make a fastq/ directory in the new project directory
 		3. Copy the fastq.gz files into fastq/ 
