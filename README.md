@@ -2,8 +2,8 @@
 This readme describes how to execute the snake make workflow for paired-end RNA-seq pre-processing (fastq -> feature counting), Utilizing STAR for alignment and Featurecounts for gene level counting.
 
 # Description of files required for snakemake:
-
-## Snakefile - This file contains the work flow
+## Snakefile
+		1. This file contains the work flow
 ## samples_info.tab - this file contains a tab deliminated table with:
 		1. The names of R1 and R2 of each fastq file as received from the sequencing center. 
 		2. Simple sample names
