@@ -22,10 +22,9 @@ This file contains general configuaration info.
 ## cluster_config.yml
 Sbatch parameters for each rule in the Snakefile workflow
 ## rename.py
-This python script renames the fastq files from the generally verbose ids given by the sequencing center to those supplied in the Samples_info.tab file.
-
-		- The Simple sample name, condition, and replicate columns are concatenated and form the new sample_id_Rx.fastq.gz files
-		- This script is executed by the rename rule in the Snakemake workflow
+		1. This python script renames the fastq files from the generally verbose ids given by the sequencing center to those supplied in the Samples_info.tab file.
+		2. The Simple sample name, condition, and replicate columns are concatenated and form the new sample_id_Rx.fastq.gz files
+		3. This script is executed snakemake_init.sh prior to snakemake execution
 ## snakemake_init.sh
 This bash script:
 
