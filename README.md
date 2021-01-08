@@ -30,7 +30,7 @@ This python script renames the fastq files from the generally verbose ids given 
 This bash script:
 
 		1. loads the miniconda3/4.6.14 module
-		2. Loads the conda environment (/gpfs/data/fisherlab/conda_envs/RNAseq)
+		2. Loads the conda environment (/gpfs/data/fisherlab/conda_envs/RNAseq). You can clone the conda environment using the RNAseq_PE.yml file and modify this bash script to load the env.
 		3. Executes snakemake
 
 ## Usage
