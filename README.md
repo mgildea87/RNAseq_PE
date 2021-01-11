@@ -32,6 +32,9 @@ This bash script:
 		2. Loads the conda environment (/gpfs/data/fisherlab/conda_envs/RNAseq). You can clone the conda environment using the RNAseq_PE.yml file and modify this bash script to load the env.
 		3. Executes snakemake
 
+## RNAseq_PE.yml
+This file contains the envrionment info used by this pipeline. 
+
 ## Usage
 When starting a new project:
 
