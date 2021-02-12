@@ -36,8 +36,8 @@ This file contains the environment info used by this pipeline.
 ## Usage
 When starting a new project:
 
-		1. Copy the above noted files (6) into the new project directory from /gpfs/home/gildem01/workflows/RNAseq_PE
-		2. Make a fastq/ directory in the new project directory
+		1. Clone the git repo using 'git clone https://github.com/mgildea87/RNAseq_PE.git'
+		2. Make a fastq/ directory in the new RNAseq_PE_git directory within your project directory
 		3. Copy the fastq.gz files into fastq/ 
 		4. Update the samples_info.tab file with fastq.gz file names and desired sample, condition, and replicate names
 		5. Update config.yaml with path to genome and feature file (if needed. The default right now is mm10)
