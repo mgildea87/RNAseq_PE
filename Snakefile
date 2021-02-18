@@ -79,6 +79,6 @@ rule count:
 		counts = 'feature_counts/count_table.txt'
 	threads: 20
 	params:
-		'-p -g gene_id -s 2 --primary'
+		'-p -g gene_id -s 2 --primary -Q 5'
 	shell:
 		'featureCounts {params} -T {threads} -a %s -o {output.counts} {input.bam}' % (GTF)
