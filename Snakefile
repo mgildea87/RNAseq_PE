@@ -70,8 +70,7 @@ rule align:
 		'--alignSplicedMateMapLmin 3 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNoverReadLmax 0.04 --outSAMunmapped Within KeepPairs --outSAMattributes All --alignIntronMin 20 '
 		'--outFilterIntronMotifs RemoveNoncanonicalUnannotated --scoreGapNoncan -14 --outSJfilterReads Unique'
 	shell:
-		'STAR {params} --genomeDir %s --runThreadN {threads} --readFilesIn {input.R1} {input.R2} --outFileNamePrefix alignment/{wildcards.sample}_ | samtools view -bh > alignment/{wildcards.sample}.bam' % (genome)
-		# removed -q 5 from samtools view (filters out multimappers)
+		'STAR {params} --genomeDir %s --runThreadN {threads} --readFilesIn {input.R1} {input.R2} --outFileNamePrefix alignment/{wildcards.sample}_ | samtools view -bh -q 5 > alignment/{wildcards.sample}.bam' % (genome)
 rule count:
 	input:
 		bam = expand('alignment/{sample}.bam', sample = sample_ids)
@@ -79,6 +78,6 @@ rule count:
 		counts = 'feature_counts/count_table.txt'
 	threads: 20
 	params:
-		'-p -g gene_id -s 2 --primary -Q 5'
+		'-p -g gene_id -s 2'
 	shell:
 		'featureCounts {params} -T {threads} -a %s -o {output.counts} {input.bam}' % (GTF)

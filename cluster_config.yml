@@ -4,7 +4,7 @@ fastqc:
   Mem: 5000 # --mem
   Cores: 1 #-c
   Partition: cpu_short # -p
-  Time: 6:00:00 # -t
+  Time: 240 # -t
   Error: logs/slurm_reports/slurm-%j.out # -e
 
 trim:
@@ -12,7 +12,7 @@ trim:
   Mem: 5000 # --mem
   Partition: cpu_short # -p
   Cores: 4 #-c
-  Time: 6:00:00 # -t
+  Time: 240 # -t
   Error: logs/slurm_reports/slurm-%j.out # -e
 
 align:
@@ -20,13 +20,13 @@ align:
   Mem: 30000 # --mem
   Partition: cpu_short # -p
   Cores: 10 #-c
-  Time: 6:00:00 # -t
+  Time: 240 # -t
   Error: logs/slurm_reports/slurm-%j.out # -e
 
 count:
-  Job_name: align # -J
+  Job_name: count # -J
   Mem: 30000 # --mem
   Partition: cpu_short # -p
   Cores: 20 #-c
-  Time: 6:00:00 # -t
+  Time: 60 # -t
   Error: logs/slurm_reports/slurm-%j.out # -e
