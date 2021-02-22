@@ -1,5 +1,5 @@
 # RNAseq_PE
-This pipeline was written for execution on the NYU big purple server. This readme describes how to execute the snake make workflow for paired-end RNA-seq pre-processing (fastq -> feature counting), Utilizing STAR for alignment and Featurecounts for gene level counting.
+This pipeline was written for execution on the NYU big purple server. This readme describes how to execute the snake make workflow for paired-end RNA-seq pre-processing (fastq -> feature counting), Utilizing STAR for alignment and Featurecounts for gene level counting. Some notes on multimappers: STAR is set to report up to 10 alignments for a read pair. If this value is exceeded, the read is unmapped. Feature counts is set to only count reads with mapq > 5 which removes all multimappers (primary or secondary alignments). Multimappers will still be reported in the feature coutns summary file. For this reason and to be able to analyze multimapping reads if wanted, I didn't remove the multimappers in the alignment step.
 
 # Description of files required for snakemake:
 ## Snakefile

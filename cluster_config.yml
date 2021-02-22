@@ -17,7 +17,7 @@ trim:
 
 align:
   Job_name: align # -J
-  Mem: 30000 # --mem
+  Mem: 60000 # --mem
   Partition: cpu_short # -p
   Cores: 10 #-c
   Time: 240 # -t
