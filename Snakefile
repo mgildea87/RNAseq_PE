@@ -52,7 +52,8 @@ rule trim:
 	log:
 		'logs/trim_reports/{sample}.log'
 	params:
-		'--adapter_sequence CTGTCTCTTATACACATCT --adapter_sequence_r2 CTGTCTCTTATACACATCT'
+		'--detect_adapter_for_pe'
+#		'--adapter_sequence CTGTCTCTTATACACATCT --adapter_sequence_r2 CTGTCTCTTATACACATCT'
 	shell:
 		'fastp -w {threads} {params} -i {input.R1} -I {input.R2} -o {output.R1} -O {output.R2} --html {output.html} --json {output.json} 2> {log}'
 
