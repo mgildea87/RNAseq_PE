@@ -4,7 +4,7 @@ conda activate /gpfs/data/fisherlab/conda_envs/RNAseq
 
 for num in {1..100}
 do
-    if ! python rename.py ${num}; then
+    if ! python cat_rename.py ${num}; then
         echo "Exiting..."
         exit
     fi

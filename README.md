@@ -21,10 +21,11 @@ This file contains general configuaration info.
 		3. Path to feature file (.GTF) for featurecounts
 ## cluster_config.yml
 Sbatch parameters for each rule in the Snakefile workflow
-## rename.py
-		1. This python script renames the fastq files from the generally verbose ids given by the sequencing center to those supplied in the Samples_info.tab file.
-		2. The sample name, condition, and replicate columns are concatenated and form the new sample_id_Rx.fastq.gz files
-		3. This script is executed snakemake_init.sh prior to snakemake execution
+## cat_rename.py
+		1. Concatenates fastq files for samples that were split over multiple sequencing lanes		
+		2. Renames the fastq files from the generally verbose ids given by the sequencing center to those supplied in the Samples_info.tab file.
+		3. The sample name, condition, and replicate columns are concatenated and form the new sample_id_Rx.fastq.gz files
+		4. This script is executed snakemake_init.sh prior to snakemake execution
 ## snakemake_init.sh
 This bash script:
 
