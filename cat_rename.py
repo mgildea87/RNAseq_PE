@@ -51,5 +51,4 @@ def rename():
 			sys.exit(1)
 
 concat()
-print('Renaming samples')
 rename()
