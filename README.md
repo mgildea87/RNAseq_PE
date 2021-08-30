@@ -29,7 +29,7 @@ Sbatch parameters for each rule in the Snakefile workflow
 ## snakemake_init.sh
 This bash script:
 
-		1. loads the miniconda3/4.6.14 module
+		1. loads the miniconda3/4.9.2 module
 		2. Loads the conda environment (/gpfs/data/fisherlab/conda_envs/RNAseq). You can clone the conda environment using the RNAseq_PE.yml file and modify this bash script to load the env.
 		3. Executes snakemake
 ## RNAseq_PE.yml
@@ -37,11 +37,11 @@ This file contains the environment info used by this pipeline.
 ## Usage
 When starting a new project:
 
-		1. Clone the git repo using 'git clone https://github.com/mgildea87/RNAseq_PE.git'
-		2. Make a fastq/ directory in the new RNAseq_PE_git directory within your project directory
-		3. Copy the fastq.gz files into fastq/ 
-		4. Update the samples_info.tab file with fastq.gz file names and desired sample, condition, and replicate names
+		1. Clone the git repo using 'git clone --recurse-submodules https://github.com/mgildea87/RNAseq_PE.git'
+		2. Run 'git submodule update --remote' to pull any changes that have been made to the cat_rename_init submodule.
+		3. Within snakemake_init.sh specifiy the location of the sequencing files from the core. cat_rename.py will concatenate, rename, and copy these to a local directory 'fastq/' 
+		4. Update the samples_info.tab file with fastq.gz file names and desired sample, condition, replicate names.
 		5. Update config.yaml with path to genome and feature file (if needed. The default right now is mm10)
-		6. Update cluster_config.yml with job desired specifications for each Snakemake rule if desired
-		7. Perform a dry run of snakemake with 'snakemake -n -r' to check for errors and this will tell you the number of jobs required. You will need to load the miniconda3/4.6.14 module and activate the RNAseq environment first. Dont forget to deactivate the environment and miniconda module before running snakemake_init.sh
-		8. Run snakemake_init.sh
+		6. Update cluster_config.yml with job desired specifications for each Snakemake rule, if desired.
+		7. Perform a dry run of snakemake with 'snakemake -n -r' to check for errors and this will tell you the number of jobs required. You will need to load the miniconda3/cpu/4.9.2 module and activate the RNAseq environment first. Dont forget to deactivate the environment and miniconda module before running snakemake_init.sh. This step is not necessary.
+		8. Run 'bash cat_rename_init/snakemake_init.sh' to execute workflow.
