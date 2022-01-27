@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-for directory in ['fastqc', 'trim', 'logs', 'logs/slurm_reports', 'logs/trim_reports', 'alignment', 'logs/alignment_reports', 'feature_counts']:
+for directory in ['fastqc','fastqc_post_trim', 'trim', 'logs', 'logs/slurm_reports', 'logs/trim_reports', 'alignment', 'logs/alignment_reports', 'feature_counts']:
 	if not os.path.isdir(directory):
 		os.mkdir(directory)
 
@@ -26,7 +26,8 @@ read = ['_R1', '_R2']
 rule all:
 	input:
 		'feature_counts/count_table.txt',
-		expand('fastqc/{sample}{read}_fastqc.html', sample = sample_ids, read = read)
+		expand('fastqc/{sample}{read}_fastqc.html', sample = sample_ids, read = read),
+		expand('fastqc_post_trim/{sample_file}_trimmed{read}_fastqc.html', sample_file = sample_ids_file, read = read)
 
 rule fastqc:
 	input: 
@@ -56,6 +57,16 @@ rule trim:
 #		'--adapter_sequence CTGTCTCTTATACACATCT --adapter_sequence_r2 CTGTCTCTTATACACATCT'
 	shell:
 		'fastp -w {threads} {params} -i {input.R1} -I {input.R2} -o {output.R1} -O {output.R2} --html {output.html} --json {output.json} 2> {log}'
+
+rule fastqc_post_trim:
+	input: 
+		fastq = "trim/{sample}{read}.fastq.gz"
+	output:  
+		"fastqc_post_trim/{sample}{read}_fastqc.html",
+	params:
+		'fastqc_post_trim/'
+	shell: 
+		'fastqc {input.fastq} -o {params}'
 
 rule align:
 	input:
