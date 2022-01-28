@@ -7,7 +7,7 @@ This file contains the work flow
 ## samples_info.tab
 This file contains a tab deliminated table with:
 
-		1. The names of R1 and R2 of each fastq file as received from the sequencing center. 
+		1. The names of R1 and R2 of each fastq file as received from the sequencing center (with 'L00X_' removed if multiple lanes). I'm planning on updating the cat_rename.py script to deal with this better. 
 		2. Simple sample names
 		3. Condition (e.g. diabetic vs non_diabetic)
 		4. Replicate #
@@ -29,10 +29,10 @@ Sbatch parameters for each rule in the Snakefile workflow
 ## snakemake_init.sh
 This bash script:
 
-		1. loads the miniconda3/4.9.2 module
-		2. Loads the conda environment (/gpfs/data/fisherlab/conda_envs/RNAseq). You can clone the conda environment using the RNAseq_PE.yml file and modify this bash script to load the env.
+		1. loads the miniconda3/cpu/4.9.2 module
+		2. Loads the conda environment (/gpfs/data/fisherlab/conda_envs/RNAseq). You can clone the conda environment using the RNAseq.yml file and modify this bash script to load the env.
 		3. Executes snakemake
-## RNAseq_PE.yml
+## RNAseq.yml
 This file contains the environment info used by this pipeline. 
 ## Usage
 When starting a new project:
@@ -44,4 +44,4 @@ When starting a new project:
 		5. Update config.yaml with path to genome and feature file (if needed. The default right now is mm10)
 		6. Update cluster_config.yml with job desired specifications for each Snakemake rule, if desired.
 		7. Perform a dry run of snakemake with 'snakemake -n -r' to check for errors and this will tell you the number of jobs required. You will need to load the miniconda3/cpu/4.9.2 module and activate the RNAseq environment first. Dont forget to deactivate the environment and miniconda module before running snakemake_init.sh. This step is not necessary.
-		8. Run 'bash cat_rename_init/snakemake_init.sh' to execute workflow.
+		8. Run "bash cat_rename_init/snakemake_init.sh -c 'RNAseq' -w 'RNAseq_PE'" to execute workflow. The -c and -w parameters tell the workflow which conda env to use and which workflow is being executed.
