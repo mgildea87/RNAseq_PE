@@ -28,7 +28,7 @@ rule all:
 	input:
 		'feature_counts/count_table.txt',
 		expand('fastqc/{sample}{read}_fastqc.html', sample = sample_ids, read = read),
-		expand('fastqc_post_trim/{sample_file}_trimmed{read}_fastqc.html', sample_file = sample_ids_file, read = read)
+		expand('fastqc_post_trim/{sample}_trimmed{read}_fastqc.html', sample = sample_ids, read = read)
 
 rule fastqc:
 	input: 
